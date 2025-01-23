@@ -1,10 +1,11 @@
 package org.example;
 
+import org.example.lesson_1.MyLinkedList;
+import org.example.lesson_1.MyList;
+
 public class Main {
     public static void main(String[] args) {
-
-
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyLinkedList<>();
         list.setFirst(11);
         list.setFirst(22);
         list.setFirst(33);

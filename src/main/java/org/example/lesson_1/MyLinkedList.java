@@ -1,6 +1,4 @@
-package org.example;
-
-import org.example.lesson_1.Node;
+package org.example.lesson_1;
 
 import java.util.NoSuchElementException;
 
