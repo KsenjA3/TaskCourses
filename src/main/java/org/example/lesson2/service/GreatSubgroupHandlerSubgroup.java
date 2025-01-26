@@ -4,7 +4,7 @@ import org.example.lesson2.model.Student;
 import org.example.lesson2.model.StudentRegister;
 import org.example.lesson2.model.Subjects;
 import org.example.lesson2.transferTask.ManageStudent;
-import org.example.lesson2.transferTask.ManegeWithPerfectStudents;
+import org.example.lesson2.transferTask.ManegeWithGreatStudents;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,42 +13,42 @@ import java.util.Iterator;
 /**
  * Использование паттерна Iterator, Template Method
  */
-public class PerfectSubgroupHandler extends Handler {
+public class GreatSubgroupHandlerSubgroup extends HandlerSubgroup {
     @Override
     public HashSet<Student> findSubgroup(String subGroup, StudentRegister register) {
         HashSet<Student> studentRegister=register.getStudentRegister();
-        ManageStudent manegeStudents = new ManegeWithPerfectStudents();
+        ManageStudent manegeStudents = new ManegeWithGreatStudents();
 
-        HashSet<Student> perfectStudent = new HashSet<>();
-        if (subGroup.equals("perfect")) {
+        HashSet<Student> greatStudent = new HashSet<>();
+        if (subGroup.equals("great")) {
             studentRegister.forEach(student -> {
                 HashMap<Subjects,Integer> scoreCard=student.getScoreCard();
 
                 /**
                  * Использование Iterator
                  */
-                boolean lowMark = false;
                 Iterator<Integer> iterator= scoreCard.values().iterator();
+                boolean lowMark = false;
                 while (iterator.hasNext()){
-                    if (iterator.next()<8) lowMark=true;
+                    if (iterator.next()<6) lowMark=true;
                 }
 
-                if (!lowMark && student.getAverageScore()>=8) {
-                    perfectStudent.add(student);
+                if (!lowMark && (student.getAverageScore()>7 && student.getAverageScore()<8) ) {
+                    greatStudent.add(student);
                 }
             });
 
             /**
              * Применение паттерна Template Method
              */
-            perfectStudent.forEach(student-> {
+            greatStudent.forEach(student-> {
                 manegeStudents.manegeWithStudent(register,student);
                 System.out.println();
             });
 
-        } else if (nextHandler != null) {
-             nextHandler.findSubgroup(subGroup, register);
+        } else if (nextHandlerSubgroup != null) {
+            nextHandlerSubgroup.findSubgroup(subGroup, register);
         }
-        return perfectStudent;
+        return greatStudent;
     }
 }

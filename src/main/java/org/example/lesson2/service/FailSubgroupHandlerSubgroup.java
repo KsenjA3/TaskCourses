@@ -5,7 +5,6 @@ import org.example.lesson2.model.StudentRegister;
 import org.example.lesson2.model.Subjects;
 import org.example.lesson2.transferTask.ManageStudent;
 import org.example.lesson2.transferTask.ManegeWithFailStudents;
-import org.example.lesson2.transferTask.ManegeWithPerfectStudents;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,7 +13,7 @@ import java.util.Iterator;
 /**
  * Использование паттерна Iterator, Template Method
  */
-public class FailSubgroupHandler extends Handler {
+public class FailSubgroupHandlerSubgroup extends HandlerSubgroup {
     @Override
     public HashSet<Student> findSubgroup(String subGroup, StudentRegister register) {
         HashSet<Student> studentRegister=register.getStudentRegister();
@@ -47,8 +46,8 @@ public class FailSubgroupHandler extends Handler {
                 System.out.println();
             });
 
-        } else if (nextHandler != null) {
-            nextHandler.findSubgroup(subGroup, register);
+        } else if (nextHandlerSubgroup != null) {
+            nextHandlerSubgroup.findSubgroup(subGroup, register);
         }
 
         return failStudent;
