@@ -1,12 +1,11 @@
-package org.example.lesson2.service;
+package org.example.lesson2_UsePatterns.service;
 
-import org.example.lesson2.model.Student;
-import org.example.lesson2.model.StudentRegister;
-import org.example.lesson2.model.Subjects;
+import org.example.lesson2_UsePatterns.model.Student;
+import org.example.lesson2_UsePatterns.model.StudentRegister;
+import org.example.lesson2_UsePatterns.model.Subjects;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 
 public class AddStudentToSubgroup extends HandlerSubgroupDecorator{
     public AddStudentToSubgroup(Handler subgroupHandler) {

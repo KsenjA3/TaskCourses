@@ -1,4 +1,4 @@
-package org.example.lesson_1;
+package org.example.lesson1_MyLinkedList;
 
 
 public interface MyList <T> {

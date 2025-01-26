@@ -1,4 +1,4 @@
-package org.example.lesson2.model;
+package org.example.lesson2_UsePatterns.model;
 
 public enum Subjects {
      HISTORY, ENGLISH, MATHEMATICS,  RUSSIAN, LITERATURE,

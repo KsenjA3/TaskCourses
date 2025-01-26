@@ -1,8 +1,8 @@
-package org.example.lesson2.service;
+package org.example.lesson2_UsePatterns.service;
 
 import lombok.AllArgsConstructor;
-import org.example.lesson2.model.Student;
-import org.example.lesson2.model.StudentRegister;
+import org.example.lesson2_UsePatterns.model.Student;
+import org.example.lesson2_UsePatterns.model.StudentRegister;
 
 import java.util.HashSet;
 

@@ -1,10 +1,10 @@
-package org.example.lesson2.service;
+package org.example.lesson2_UsePatterns.service;
 
-import org.example.lesson2.model.Student;
-import org.example.lesson2.model.StudentRegister;
-import org.example.lesson2.model.Subjects;
-import org.example.lesson2.transferTask.ManageStudent;
-import org.example.lesson2.transferTask.ManegeWithGreatStudents;
+import org.example.lesson2_UsePatterns.model.Student;
+import org.example.lesson2_UsePatterns.model.StudentRegister;
+import org.example.lesson2_UsePatterns.model.Subjects;
+import org.example.lesson2_UsePatterns.transferTask.ManageStudent;
+import org.example.lesson2_UsePatterns.transferTask.ManegeWithGreatStudents;
 
 import java.util.HashMap;
 import java.util.HashSet;

@@ -1,7 +1,7 @@
-package org.example.lesson2.distridutionInfo;
+package org.example.lesson2_UsePatterns.distridutionInfo;
 
 import lombok.AllArgsConstructor;
-import org.example.lesson2.model.StudentRegister;
+import org.example.lesson2_UsePatterns.model.StudentRegister;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

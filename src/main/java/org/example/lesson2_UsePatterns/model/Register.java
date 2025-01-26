@@ -1,4 +1,4 @@
-package org.example.lesson2.model;
+package org.example.lesson2_UsePatterns.model;
 
 import java.util.HashMap;
 

@@ -1,7 +1,6 @@
-package org.example.lesson2.model;
+package org.example.lesson2_UsePatterns.model;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
