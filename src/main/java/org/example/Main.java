@@ -3,14 +3,20 @@ package org.example;
 import org.example.lesson_1.MyLinkedList;
 import org.example.lesson_1.MyList;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
 public class Main {
     public static void main(String[] args) {
-        MyList<Integer> list = new MyLinkedList<>();
-        list.setFirst(11);
-        list.setFirst(22);
-        list.setFirst(33);
-        list.setFirst(44);
+        List<String> l1= new ArrayList<>();
+        List<String> l2 = new LinkedList<>();
+        List<Object> lo = new ArrayList<>();
+        l1.add("John");
+        l2.add("John");
 
-        System.out.println(list);
+
+        System.out.println(28%10);
     }
 }
