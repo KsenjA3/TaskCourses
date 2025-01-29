@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.lesson1_MyLinkedList.MyLinkedList;
-import org.example.lesson1_MyLinkedList.MyList;
+import org.example.lesson1_myLinkedList.MyLinkedList;
+import org.example.lesson1_myLinkedList.MyList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,11 +1,11 @@
-package org.example.lesson2_UsePatterns;
+package org.example.lesson2_usePatterns;
 
-import org.example.lesson2_UsePatterns.distridutionInfo.StudentRegisterHandler;
-import org.example.lesson2_UsePatterns.model.Register;
-import org.example.lesson2_UsePatterns.model.Student;
-import org.example.lesson2_UsePatterns.model.StudentRegister;
-import org.example.lesson2_UsePatterns.model.Subjects;
-import org.example.lesson2_UsePatterns.service.*;
+import org.example.lesson2_usePatterns.distridutionInfo.StudentRegisterHandler;
+import org.example.lesson2_usePatterns.model.Register;
+import org.example.lesson2_usePatterns.model.Student;
+import org.example.lesson2_usePatterns.model.StudentRegister;
+import org.example.lesson2_usePatterns.model.Subjects;
+import org.example.lesson2_usePatterns.service.*;
 
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
@@ -27,10 +27,10 @@ public class Lesson2Demo {
         System.out.println("--------------------------------------------------------");
         StudentRegister studentRegister = new StudentRegister();
         Register proxyStudentRegister= (Register) Proxy.newProxyInstance(
-                StudentRegister.class.getClassLoader(),
-//                studentRegister.getClass().getClassLoader(),
-                new Class [] {Register.class},
-//                studentRegister.getClass().getInterfaces(),
+//                StudentRegister.class.getClassLoader(),
+                studentRegister.getClass().getClassLoader(),
+//                new Class [] {Register.class},
+                studentRegister.getClass().getInterfaces(),
                 new StudentRegisterHandler(studentRegister));
 
         for (int i = 1; i < 20; i++) {

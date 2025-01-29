@@ -1,4 +1,4 @@
-package org.example.lesson2_UsePatterns.service;
+package org.example.lesson2_usePatterns.service;
 
 
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
-package org.example.lesson2_UsePatterns.transferTask;
+package org.example.lesson2_usePatterns.transferTask;
 
-import org.example.lesson2_UsePatterns.model.Student;
-import org.example.lesson2_UsePatterns.model.StudentRegister;
+import org.example.lesson2_usePatterns.model.Student;
+import org.example.lesson2_usePatterns.model.StudentRegister;
 
 
 /**

@@ -1,4 +1,4 @@
-package org.example.lesson2_UsePatterns.model;
+package org.example.lesson2_usePatterns.model;
 
 import lombok.Builder;
 import lombok.Getter;

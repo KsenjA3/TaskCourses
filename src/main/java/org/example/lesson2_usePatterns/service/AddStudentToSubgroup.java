@@ -1,8 +1,8 @@
-package org.example.lesson2_UsePatterns.service;
+package org.example.lesson2_usePatterns.service;
 
-import org.example.lesson2_UsePatterns.model.Student;
-import org.example.lesson2_UsePatterns.model.StudentRegister;
-import org.example.lesson2_UsePatterns.model.Subjects;
+import org.example.lesson2_usePatterns.model.Student;
+import org.example.lesson2_usePatterns.model.StudentRegister;
+import org.example.lesson2_usePatterns.model.Subjects;
 
 import java.util.HashMap;
 import java.util.HashSet;

@@ -1,10 +1,10 @@
-package org.example.lesson2_UsePatterns.service;
+package org.example.lesson2_usePatterns.service;
 
-import org.example.lesson2_UsePatterns.model.Student;
-import org.example.lesson2_UsePatterns.model.StudentRegister;
-import org.example.lesson2_UsePatterns.model.Subjects;
-import org.example.lesson2_UsePatterns.transferTask.ManageStudent;
-import org.example.lesson2_UsePatterns.transferTask.ManegeWithGreatStudents;
+import org.example.lesson2_usePatterns.model.Student;
+import org.example.lesson2_usePatterns.model.StudentRegister;
+import org.example.lesson2_usePatterns.model.Subjects;
+import org.example.lesson2_usePatterns.transferTask.ManageStudent;
+import org.example.lesson2_usePatterns.transferTask.ManegeWithFailStudents;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,35 +13,35 @@ import java.util.Iterator;
 /**
  * Использование паттерна Iterator, Template Method
  */
-public class GreatSubgroupHandlerSubgroup extends HandlerSubgroup {
+public class FailSubgroupHandlerSubgroup extends HandlerSubgroup {
     @Override
     public HashSet<Student> findSubgroup(String subGroup, StudentRegister register) {
         HashSet<Student> studentRegister=register.getStudentRegister();
-        ManageStudent manegeStudents = new ManegeWithGreatStudents();
+        ManageStudent manegeStudents = new ManegeWithFailStudents();
 
-        HashSet<Student> greatStudent = new HashSet<>();
-        if (subGroup.equals("great")) {
+        HashSet<Student> failStudent = new HashSet<>();
+        if (subGroup.equals("fail")) {
             studentRegister.forEach(student -> {
                 HashMap<Subjects,Integer> scoreCard=student.getScoreCard();
 
                 /**
                  * Использование Iterator
                  */
-                Iterator<Integer> iterator= scoreCard.values().iterator();
                 boolean lowMark = false;
+                Iterator<Integer> iterator= scoreCard.values().iterator();
                 while (iterator.hasNext()){
-                    if (iterator.next()<6) lowMark=true;
+                    if (iterator.next()<4) lowMark=true;
                 }
 
-                if (!lowMark && (student.getAverageScore()>7 && student.getAverageScore()<8) ) {
-                    greatStudent.add(student);
+                if (lowMark || student.getAverageScore()<4) {
+                    failStudent.add(student);
                 }
             });
 
             /**
              * Применение паттерна Template Method
              */
-            greatStudent.forEach(student-> {
+            failStudent.forEach(student-> {
                 manegeStudents.manegeWithStudent(register,student);
                 System.out.println();
             });
@@ -49,6 +49,7 @@ public class GreatSubgroupHandlerSubgroup extends HandlerSubgroup {
         } else if (nextHandlerSubgroup != null) {
             nextHandlerSubgroup.findSubgroup(subGroup, register);
         }
-        return greatStudent;
+
+        return failStudent;
     }
 }

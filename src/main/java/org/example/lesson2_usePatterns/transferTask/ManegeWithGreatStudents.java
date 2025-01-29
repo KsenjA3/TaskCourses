@@ -1,6 +1,6 @@
-package org.example.lesson2_UsePatterns.transferTask;
+package org.example.lesson2_usePatterns.transferTask;
 
-import org.example.lesson2_UsePatterns.model.Student;
+import org.example.lesson2_usePatterns.model.Student;
 
 public class ManegeWithGreatStudents extends ManageStudent {
 

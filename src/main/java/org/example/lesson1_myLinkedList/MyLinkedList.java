@@ -1,4 +1,4 @@
-package org.example.lesson1_MyLinkedList;
+package org.example.lesson1_myLinkedList;
 
 import java.util.NoSuchElementException;
 
