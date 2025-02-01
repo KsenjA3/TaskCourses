@@ -40,7 +40,7 @@ class Forecast {
                     System.out.printf("%s.\n", forecast.getWeatherDescription(jObject));
 
                 } catch (NoSuchElementException ex) {
-                    System.out.println("Город не найден.");
+                    System.err.println("Город не найден.");
                 }
                 System.out.print("Введите название города.   ");
             }
