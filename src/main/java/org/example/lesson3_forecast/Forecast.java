@@ -9,27 +9,38 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class Forecast {
+class Forecast {
+    static final String apiKey="331de9ad471a43fbb1c193748252801";
+
     public static void main(String[] args) {
         Forecast forecast= new Forecast();
-        String apiKey="331de9ad471a43fbb1c193748252801";
         String city;
         String urlString;
+
         try(Scanner sc = new Scanner(System.in)) {
             System.out.print("Введите название города.   ");
+
             while(sc.hasNextLine()) {
                 city = sc.nextLine();
                 urlString = "http://api.weatherapi.com/v1/current.json?key=" + apiKey + "&q=" + city;
+                String response;
 
-                if (forecast.getResponse(urlString).isEmpty())
+                try {
+                    response = forecast.getResponse(urlString).get();
+
+                    JSONObject jObject = new JSONObject(response);
+
+                    double temp=forecast.getTemperature(jObject);
+                    System.out.printf("Температура в %s %d°C. ",city,Math.round(temp));
+                    System.out.printf("%s.\n", forecast.getWeatherDescription(jObject));
+
+                } catch (NoSuchElementException ex) {
                     System.out.println("Город не найден.");
-                else  {
-                    double temp=forecast.parsingResponse(forecast.getResponse(urlString).get());
-                    System.out.printf("Температура в %s %d°C.\n",city,Math.round(temp));
                 }
                 System.out.print("Введите название города.   ");
             }
@@ -43,7 +54,7 @@ public class Forecast {
     private Optional<String> getResponse(String urlString) throws MalformedURLException, IOException {
         URL url = new URL(urlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
+        connection.setRequestMethod("GET");
         connection.setDoOutput(true);
 
         int responseCode = connection.getResponseCode();
@@ -57,10 +68,14 @@ public class Forecast {
         return Optional.empty();
     }
 
-    private Double parsingResponse(String response) {
-        JSONObject jObject = new JSONObject(response);
+    private Double getTemperature(JSONObject jObject) {
         Double tempC=jObject.getJSONObject("current").getDouble("temp_c");
         return tempC;
+    }
+
+    private String getWeatherDescription(JSONObject jObject) {
+        return  jObject.getJSONObject("current").getJSONObject("condition").getString("text");
+//                jObject.getJSONArray("condition").getJSONObject(0).getString("description");
     }
 
 }
