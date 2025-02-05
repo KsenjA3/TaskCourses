@@ -19,3 +19,4 @@ ENV POSTGRES_PASSWORD 11111
 
 # select * from weather;
 
+# SELECT MAX(id) FROM weather;

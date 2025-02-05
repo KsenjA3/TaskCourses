@@ -28,6 +28,7 @@ public class ForecastDb {
                     INSERT INTO weather(id, city, description, temperature, time) VALUES
                     (?, ?, ?, ?, ?) ; 
                      """;
+    private  static final  String COMMAND_FIND_MAX_ID =  "SELECT MAX(id) as max FROM weather;";
 
         public static void main(String[] args) {
             String urlString;
@@ -35,15 +36,20 @@ public class ForecastDb {
             String city;
             int temperature;
             String description;
-            int id;
+            int id=0;
 
             ForecastDb forecast= new ForecastDb();
 
             try(Scanner sc = new Scanner(System.in) ;
                 Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
-                PreparedStatement preparedStatement = con.prepareStatement(COMMAND)) {
-//выбрать max id
-                id =5;
+                PreparedStatement preparedStatement = con.prepareStatement(COMMAND);
+                Statement statement = con.createStatement()) {
+
+
+                //find max id  to update DB
+                ResultSet rs = statement.executeQuery(COMMAND_FIND_MAX_ID);
+                if (rs.next()) id=rs.getInt("max");
+
                 System.out.print("Введите название города.   ");
 
                 while(sc.hasNextLine()) {
