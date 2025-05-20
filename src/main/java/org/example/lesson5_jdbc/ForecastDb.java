@@ -25,9 +25,9 @@ public class ForecastDb {
     private  static final  String USER =  "myuser";
     private  static final  String PASSWORD =  "11111";
     private  static final  String COMMAND = """
-                    INSERT INTO weather(id, city, description, temperature, time) VALUES
-                    (?, ?, ?, ?, ?) ; 
-                     """;
+                                            INSERT INTO weather(id, city, description, temperature, time) 
+                                            VALUES (?, ?, ?, ?, ?) ; 
+                                             """;
     private  static final  String COMMAND_FIND_MAX_ID =  "SELECT MAX(id) as max FROM weather;";
 
         public static void main(String[] args) {
@@ -44,7 +44,6 @@ public class ForecastDb {
                 Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
                 PreparedStatement preparedStatement = con.prepareStatement(COMMAND);
                 Statement statement = con.createStatement()) {
-
 
                 //find max id  to update DB
                 ResultSet rs = statement.executeQuery(COMMAND_FIND_MAX_ID);
@@ -75,8 +74,9 @@ public class ForecastDb {
 
                         preparedStatement.executeUpdate();
 
-                        System.out.printf("Температура в %s %d°C. ",city,temperature);
-                        System.out.printf("%s.\n",description );
+//                        System.out.printf("Температура в %s %d°C. ",city,temperature);
+//                        System.out.printf("%s.\n",description );
+                        forecast.printWeatherByCity(con, city);
 
                     } catch (NoSuchElementException ex) {
                         System.err.println("Город не найден.");
@@ -120,6 +120,24 @@ public class ForecastDb {
             return  jObject.getJSONObject("current").getJSONObject("condition").getString("text");
         }
 
+    private void printWeatherByCity(Connection connection, String city) {
+        String query = "SELECT temperature, description FROM weather WHERE city = ? ORDER BY time DESC LIMIT 1";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, city);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    int temperature = rs.getInt("temperature");
+                    String description = rs.getString("description");
+                    System.out.printf("Температура в %s %d°C. %s.\n", city, temperature, description);
+                } else {
+                    System.out.println("Записей для города " + city + " не найдено.");
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Ошибка при получении данных из базы:");
+            e.printStackTrace();
+        }
+    }
 }
 
 

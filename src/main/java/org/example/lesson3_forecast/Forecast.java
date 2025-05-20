@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 class Forecast {
     static final String apiKey="331de9ad471a43fbb1c193748252801";
 
+
     public static void main(String[] args) {
         Forecast forecast= new Forecast();
         String city;
@@ -77,6 +78,7 @@ class Forecast {
         return  jObject.getJSONObject("current").getJSONObject("condition").getString("text");
 //                jObject.getJSONArray("condition").getJSONObject(0).getString("description");
     }
+
 
 }
 

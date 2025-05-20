@@ -8,6 +8,9 @@ ENV POSTGRES_PASSWORD 11111
 # docker exec -it forecast_db psql -U myuser forecast_db
 #  запуск..интерактивный режим..имя_контейнера..имя_бд..имя_user..название_бд_в_контейнере
 
+# \dt
+# \q
+
 # CREATE TABLE weather (
 #   id SERIAL PRIMARY KEY,
 #   city VARCHAR(255) NOT NULL,
