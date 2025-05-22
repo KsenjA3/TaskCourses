@@ -33,6 +33,7 @@ class MyLinkedListTest {
         assertEquals("MyLinkedList{1-[44],2-[11],3-[22],4-[33],5-[11]}", list.toString());
     }
 
+
     @Test
     void setLast() {
         list.setLast(44);

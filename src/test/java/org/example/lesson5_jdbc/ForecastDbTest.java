@@ -46,6 +46,7 @@ public class ForecastDbTest {
         System.setOut(originalOut);
     }
 
+
     @Test
     void testWeatherRecordAndRetrieval() throws Exception {
         int expectedTemperature = 25;
@@ -53,6 +54,7 @@ public class ForecastDbTest {
         String city = "London";
         String description = "Sunny";
         double temperature = 25.3;
+
         JSONObject jsonBody = new JSONObject();
         JSONObject location = new JSONObject();
         location.put("name", city);
@@ -119,7 +121,6 @@ public class ForecastDbTest {
 
         String urlString = ForecastDb.apiUrl + "/v1/current.json?key=" + ForecastDb.apiKey + "&q=" + city;
         String response = forecastDb.getResponse(urlString).get();
-        System.out.println(response);
         JSONObject jObject = new JSONObject(response);
 
             double temp = forecastDb.getTemperature(jObject);
@@ -130,9 +131,6 @@ public class ForecastDbTest {
 
             forecastDb.saveWeatherToDatabase(connection, id, city, descriptionGet, temperatureGet, dateGet);
             forecastDb.printWeatherByCity(connection, city);
-
-
-
 
         assertEquals(temperatureGet, expectedTemperature);
         assertEquals(descriptionGet, description);
